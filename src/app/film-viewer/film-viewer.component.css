@@ -1,0 +1,80 @@
+.films-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 500px;
+    overflow: auto;
+  }
+  
+  .film-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .film-card img {
+    max-width: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .film-details {
+    flex: 1;
+  }
+  
+  .film-card input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2); /* Slightly bigger checkboxes */
+  }
+  
+  .film-card.selected {
+    background-color: #f0f8ff; /* Highlight selected film */
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  button:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+    color: #bbb;
+  }
+  
+  .delete-button {
+    background-color: #ff4f4f; /* Red color for delete button */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff3333; /* Darker red on hover */
+  }
+  
+  .delete-button:disabled {
+    background-color: #dcdcdc; /* Grey when disabled */
+    color: #aaa;
+  }
+  

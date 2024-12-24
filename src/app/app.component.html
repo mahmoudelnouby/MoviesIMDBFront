@@ -1,0 +1,13 @@
+<!-- logout.component.html -->
+ @if (!inLoginPage) {
+     <div id="fixedElement">
+         <button (click)="logout()">Logout</button>
+         @if (!inUserPage) {
+             <button  (click)="goToUserPage()">View User Dashboard</button>
+         }
+         @else {
+             <button  (click)="goToAdminPage()">View Admin Dashboard</button>
+         }
+     </div>
+ }
+<router-outlet></router-outlet>

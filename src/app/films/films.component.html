@@ -1,0 +1,36 @@
+<div class="search-bar">
+  <!-- Input for searching films by title -->
+  <input [(ngModel)]="searchTitle" placeholder="Search by title" />
+  <button (click)="onSearch()">Search</button>
+  <button (click)="navigateToDatabasePage()">View Films from Database</button>
+</div>
+
+<div class="film-list">
+  <!-- List films with checkboxes -->
+  <div *ngFor="let film of films" class="film-item">
+    <input 
+      type="checkbox" 
+      [checked]="film.selected" 
+      (change)="toggleSelection(film)" />
+    <img 
+      *ngIf="film.Poster !== 'N/A'" 
+      [src]="film.Poster" 
+      alt="{{ film.Title }}" 
+      class="film-poster" />
+    <div class="film-title">{{ film.Title }}</div>
+  </div>
+</div>
+
+<div class="pagination">
+  <!-- Pagination controls -->
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <button (click)="nextPage()" [disabled]="disabledNextBtn">Next</button>
+  
+  <!-- Save button -->
+  <button 
+    class="save-button" 
+    (click)="saveSelectedFilms()" 
+    [disabled]="!disableSaveFilmBtn">
+    Save Selected Films
+  </button>
+</div>

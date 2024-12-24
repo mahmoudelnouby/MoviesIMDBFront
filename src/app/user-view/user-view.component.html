@@ -1,0 +1,69 @@
+
+<div class="search-container">
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    placeholder="Search for movies..." 
+    class="search-bar"
+  />
+  <button type="button" (click)="onSearch()">Search</button>
+</div>
+<div class="movie-cards">
+    <div *ngFor="let movie of movies; let i = index" class="movie-card">
+      <img [src]="movie.Poster" alt="{{movie.Title}}">
+      <h3>{{ movie.Title }} ({{ movie.Year }})</h3>
+      <p>IMDB ID: {{ movie.imdbID }}</p>
+      <button (click)="openDetails(movie)">Show Details</button>
+      <div class="rating-form">
+        <input 
+          type="number" 
+          [(ngModel)]="movie.userRating" 
+          min="1" 
+          max="10" 
+          placeholder="Rate (1-10)" 
+          class="rating-input" 
+        />
+        <button type="button" (click)="submitRating(movie, i)">Submit Rating</button>
+        <p *ngIf="movie.userRating !== undefined">Your Rating: {{ movie.userRating }}</p>
+
+      </div>
+    </div>
+  </div>
+  
+  <!-- Pagination Controls -->
+  <div class="pagination">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages - 1">Next</button>
+  </div>
+  
+  <!-- Popup Modal for Movie Details -->
+  <div *ngIf="showDetailsPopup" class="popup">
+    <div class="popup-content">
+      <button class="close-btn" (click)="closeDetails()">X</button>
+      <h2>{{ selectedMovie.Title }}</h2>
+      <img [src]="selectedMovie.Poster" alt="{{ selectedMovie.Title }}">
+      <p><strong>Year:</strong> {{ selectedMovie.Year }}</p>
+      <p><strong>Rated:</strong> {{ selectedMovie.Rated }}</p>
+      <p><strong>Released:</strong> {{ selectedMovie.Released }}</p>
+      <p><strong>Runtime:</strong> {{ selectedMovie.Runtime }}</p>
+      <p><strong>Genre:</strong> {{ selectedMovie.Genre }}</p>
+      <p><strong>Director:</strong> {{ selectedMovie.Director }}</p>
+      <p><strong>Writer:</strong> {{ selectedMovie.Writer }}</p>
+      <p><strong>Actors:</strong> {{ selectedMovie.Actors }}</p>
+      <p><strong>Language:</strong> {{ selectedMovie.Language }}</p>
+      <p><strong>Country:</strong> {{ selectedMovie.Country }}</p>
+      <p><strong>Awards:</strong> {{ selectedMovie.Awards }}</p>
+      <p><strong>Plot:</strong> {{ selectedMovie.Plot }}</p>
+      <p><strong>IMDB Rating:</strong> {{ selectedMovie.imdbRating }}</p>
+      <p><strong>Box Office:</strong> {{ selectedMovie.BoxOffice }}</p>
+      <p><strong>IMDB Votes:</strong> {{ selectedMovie.imdbVotes }}</p>
+      <p><strong>Metascore:</strong> {{ selectedMovie.Metascore }}</p>
+      <div class="ratings">
+        <div *ngFor="let rating of selectedMovie.Ratings">
+          <p><strong>{{ rating.Source }}:</strong> {{ rating.Value }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

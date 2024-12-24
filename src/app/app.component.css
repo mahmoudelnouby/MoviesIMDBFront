@@ -1,0 +1,32 @@
+#fixedElement {
+    position: fixed;
+    top: 20px;  /* Distance from the top of the viewport */
+    right: 20px;  /* Distance from the right side of the viewport */
+    z-index: 1000;  /* Ensures the button stays above other content */
+  }
+  
+  #fixedElement button {
+    padding: 10px 20px;  /* Add some padding for better button size */
+    background-color: #f44336;  /* Red background */
+    color: white;  /* White text */
+    font-size: 16px;  /* Increase font size */
+    border: none;  /* Remove border */
+    border-radius: 5px;  /* Round the corners */
+    cursor: pointer;  /* Show a pointer on hover */
+    transition: background-color 0.3s, transform 0.3s;  /* Smooth transitions */
+  }
+  
+  #fixedElement button:hover {
+    background-color: #d32f2f;  /* Darker red on hover */
+    transform: translateY(-2px);  /* Slightly raise the button on hover */
+  }
+  
+  #fixedElement button:active {
+    background-color: #b71c1c;  /* Even darker red when clicked */
+    transform: translateY(0);  /* Return to original position when clicked */
+  }
+  
+  #fixedElement button:focus {
+    outline: none;  /* Remove focus outline */
+  }
+  
